@@ -38,7 +38,7 @@
         .not-whitelisted {
             color: red;
         }
-        img {
+        img, iframe {
             width: 100%;
             max-width: 400px;
             border-radius: 8px;
@@ -50,7 +50,11 @@
 
     <h1>Apelist Checker</h1>
 
-    <img src="DIRECT_IMAGE_URL" alt="Apeverse Image">
+    <!-- Replace IMAGE_URL with the direct link to your image -->
+    <img src="https://i.imgur.com/tHwewBO.gif" alt="Apeverse Image">
+
+    <!-- Replace GIF_URL with the direct link to your GIF -->
+    <iframe src="https://i.imgur.com/tHwewBO.gif" width="400" height="225" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 
     <form id="walletForm">
         <label for="walletAddress">Enter your wallet address:</label>
@@ -94,4 +98,12 @@
             if (apelistAddresses.includes(enteredAddress)) {
                 document.getElementById("resultMessage").innerText = "Congrats, you are in the Apelist!";
                 document.getElementById("resultMessage").className = "whitelisted";
+            } else {
+                document.getElementById("resultMessage").innerText = "Sorry, you are not in the Apelist.";
+                document.getElementById("resultMessage").className = "not-whitelisted";
             }
+        }
+    </script>
+
+</body>
+</html>

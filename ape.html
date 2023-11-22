@@ -1,0 +1,33 @@
+<!-- wallet-checker.html -->
+
+<html>
+<head>
+    <title>Wallet Checker</title>
+</head>
+<body>
+    <form id="walletForm">
+        <label for="walletAddress">Enter your wallet address:</label>
+        <input type="text" id="walletAddress" placeholder="Paste your wallet address here" required>
+        <button type="button" onclick="checkWhitelist()">Check Whitelist</button>
+        <p id="resultMessage"></p>
+    </form>
+
+    <script>
+        function checkWhitelist() {
+            var enteredAddress = document.getElementById("walletAddress").value;
+            var textFileURL = 'URL_TO_YOUR_TEXT_FILE';
+
+            fetch(textFileURL)
+                .then(response => response.text())
+                .then(data => {
+                    if (data.includes(enteredAddress)) {
+                        document.getElementById("resultMessage").innerText = "Congrats, you are whitelisted!";
+                    } else {
+                        document.getElementById("resultMessage").innerText = "Sorry, you are not whitelisted.";
+                    }
+                })
+                .catch(error => console.error('Error fetching whitelist:', error));
+        }
+    </script>
+</body>
+</html>

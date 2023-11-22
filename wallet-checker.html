@@ -55,7 +55,7 @@
     <h1>Apelist Checker</h1>
 
     <form id="walletForm">
-        <label for="walletAddress">Enter your wallet address:</label>
+        <label for="walletAddress">Enter your wallet address for Apelist:</label>
         <input type="text" id="walletAddress" placeholder="Paste your wallet address here" required>
         <button type="button" onclick="checkApelist()">Check Apelist</button>
         <p id="resultMessage"></p>
@@ -66,7 +66,7 @@
     <h1>Free Mint Checker</h1>
 
     <form id="freeMintForm">
-        <label for="freeMintAddress">Enter your wallet address:</label>
+        <label for="freeMintAddress">Enter your wallet address for Free Mint:</label>
         <input type="text" id="freeMintAddress" placeholder="Paste your wallet address here" required>
         <button type="button" onclick="checkFreeMint()">Check Free Mint</button>
         <p id="resultMessageFree"></p>
@@ -75,57 +75,47 @@
     <script>
         // List of Apelist addresses
         var apelistAddresses = [
-            "0xF90F4933D08d154EBF51910B29BE5aBEAc539925"
-"0x1e02D4f2E74370aE2e1dD5ed1F92554c7e187315"
-"0x7969fe9086c2BEDBF99751DD65E20772bA217ccf"
-"0xff67930DF4049002190e6ED8a9930210E768FB95"
-"0x6a25F3FaC9E0F81Ee230c2fC6fCCf5B52e90cC91"
-"0xE5475694dbDa631a7d88Fff7d1b751A457B76824"
-"0xBa2e29e3601dD80f8e6A66a85fBe1229a3F14D01"
-"0xBc50200f92D25FD18E86D8510Fd0540295427B35"
-"0x9FC825e9a48B431250C5b6DbB3361e30A8381EB8"
-"0x60DfD63d65d922707879B307fE00022e1eC14699"
-"0x52a33cbA11e0834282db3354a2f03ee42B68d5E1"
-"0x9FC825e9a48B431250C5b6DbB3361e30A8381EB8"
-"0x7a65f32ad980Da9d307a20a2aa9687800cAa390f"
-"0xE712Cba922c5A34AB4b07C56FD9D51dB04A3be02"
-"0xE1BdcAF94d855703a5eFCE708A992126f83A0eFE"
-"0x3AC9E19507B2BeBd1Ea1D29f51C5eA36d221E780"
-"0xa67A4bDaEdD0600A7C39822c5431896DE9126BCE"
-"0x82D02eEdD932eF8d6c3a8408B30b26D254dc7da8"
-"0x48243d05e3C74b0b4eAA6c0530C3451aDF3f82e6"
-"0xbC685D67a07F4E780660903797dF53ed01084419"
-"0x3331c111704f4Fc251C36f14c44a6d5759cf5D3C"
-"0x1a3fadf44c95A5B9777775CcfF61e1F391c498d9"
-"0x09008e91AB755714C3B221658D4D6874AED12984"
-"0x1e02D4f2E74370aE2e1dD5ed1F92554c7e187315"
-"0x1Ba1BF324b1342Bbaf00A7065Ae1e520decDd1B4"
-"0x5e21535EF3ac184f2aB72243E993E6af9e2B643b"
-"0xC10bb0f31101469C1351253a5358F61cdd3Deb2a"
-"0xe53b060CA05d263a045A026ae3b5F54C694C14EA"
-"0xd374DBE0ac3014B0853414CF055A5004cF4675D0"
-"0x46F5E620C326Ee0275dbDFBdB98320DC0e816c1D",
-            // Add the rest of the Apelist addresses here
+            "0x1005Fbf6Ff95dF199813d173c9325286052c26cf",
+            "0x9cef01a6Fe9e2d459C550e7278ee1DE0e2296c34",
+            "0xe7F3A19dEE6E8196c784952617aAb382dCca566b",
+            "0xF90F4933D08d154EBF51910B29BE5aBEAc539925",
+            "0x1e02D4f2E74370aE2e1dD5ed1F92554c7e187315",
+            "0x7969fe9086c2BEDBF99751DD65E20772bA217ccf",
+            "0xff67930DF4049002190e6ED8a9930210E768FB95",
+            "0x6a25F3FaC9E0F81Ee230c2fC6fCCf5B52e90cC91",
+            "0xE5475694dbDa631a7d88Fff7d1b751A457B76824",
+            "0xBa2e29e3601dD80f8e6A66a85fBe1229a3F14D01",
+            "0xBc50200f92D25FD18E86D8510Fd0540295427B35",
+            "0x9FC825e9a48B431250C5b6DbB3361e30A8381EB8",
+            "0x60DfD63d65d922707879B307fE00022e1eC14699",
+            "0x52a33cbA11e0834282db3354a2f03ee42B68d5E1",
+            "0x9FC825e9a48B431250C5b6DbB3361e30A8381EB8",
+            "0x7a65f32ad980Da9d307a20a2aa9687800cAa390f",
+            "0xE712Cba922c5A34AB4b07C56FD9D51dB04A3be02",
+            "0xE1BdcAF94d855703a5eFCE708A992126f83A0eFE",
+            "0x3AC9E19507B2BeBd1Ea1D29f51C5eA36d221E780",
+            "0xa67A4bDaEdD0600A7C39822c5431896DE9126BCE",
+            "0x82D02eEdD932eF8d6c3a8408B30b26D254dc7da8",
+            "0x48243d05e3C74b0b4eAA6c0530C3451aDF3f82e6",
+            // Add the rest of the addresses here
         ];
 
         // List of Free Mint addresses
         var freeMintAddresses = [
-            "0x124A830A46082e73476C7042D8DFB7D4dADF6596"
-"0x3F1fBc615658EC482b16da264deC33832d8e0A7E"
-"0xa2590cEA17239C32C05500A44e29221906956155"
-"0xE5475694dbDa631a7d88Fff7d1b751A457B76824"
-"0xe7F3A19dEE6E8196c784952617aAb382dCca566b"
-"0x9807eceCa310e31BA8E71316432Fe4836b45DA32"
-"0xADE4FBED97eF37F3BfbaF36B575a1B114DA92155"
-"0xCabB179ca4f9360e4761121A2363a3AF5587B1aA"
-"0xDcE27571b41AAf718A3Addde33491BDA74138589",
-            // Add the rest of the Free Mint addresses here
+            "0x124A830A46082e73476C7042D8DFB7D4dADF6596",
+            "0x3F1fBc615658EC482b16da264deC33832d8e0A7E",
+            "0xa2590cEA17239C32C05500A44e29221906956155",
+            "0xE5475694dbDa631a7d88Fff7d1b751A457B76824",
+            "0xe7F3A19dEE6E8196c784952617aAb382dCca566b",
+            "0x9807eceCa310e31BA8E71316432Fe4836b45DA32",
+            "0xADE4FBED97eF37F3BfbaF36B575a1B114DA92155",
+            "0xCabB179ca4f9360e4761121A2363a3AF5587B1aA",
+            "0xDcE27571b41AAf718A3Addde33491BDA74138589",
+            // Add the rest of the addresses here
         ];
 
         function checkApelist() {
             var enteredAddress = document.getElementById("walletAddress").value;
-
-            // Check if the entered address is in the Apelist
             if (apelistAddresses.includes(enteredAddress)) {
                 document.getElementById("resultMessage").innerText = "Congrats, you are in the Apelist!";
                 document.getElementById("resultMessage").className = "whitelisted";
@@ -137,10 +127,8 @@
 
         function checkFreeMint() {
             var enteredAddress = document.getElementById("freeMintAddress").value;
-
-            // Check if the entered address is in the Free Mint list
             if (freeMintAddresses.includes(enteredAddress)) {
-                document.getElementById("resultMessageFree").innerText = "Congrats, you are eligible for Free Mint!";
+                document.getElementById("resultMessageFree").innerText = "You are eligible for Free Mint!";
                 document.getElementById("resultMessageFree").className = "free-mint";
             } else {
                 document.getElementById("resultMessageFree").innerText = "Sorry, you are not eligible for Free Mint.";

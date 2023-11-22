@@ -4,19 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Apelist Checker</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap">
     <style>
         body {
             background-color: #C4FBFF;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
         }
         h1 {
             font-size: 2em;
             font-weight: bold;
             margin-bottom: 20px;
+            font-family: 'Bubblegum Sans', cursive;
         }
         form {
-            margin: 20px auto;
             max-width: 400px;
+            margin: 20px auto;
             padding: 20px;
             background-color: #fff;
             border-radius: 10px;
@@ -31,11 +38,19 @@
         .not-whitelisted {
             color: red;
         }
+        img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 8px;
+            margin: 1.6em 0 0.9em;
+        }
     </style>
 </head>
 <body>
 
     <h1>Apelist Checker</h1>
+
+    <img src="DIRECT_IMAGE_URL" alt="Apeverse Image">
 
     <form id="walletForm">
         <label for="walletAddress">Enter your wallet address:</label>
@@ -69,18 +84,7 @@
             "0xa67A4bDaEdD0600A7C39822c5431896DE9126BCE",
             "0x82D02eEdD932eF8d6c3a8408B30b26D254dc7da8",
             "0x48243d05e3C74b0b4eAA6c0530C3451aDF3f82e6",
-            "0xbC685D67a07F4E780660903797dF53ed01084419",
-            "0x3331c111704f4Fc251C36f14c44a6d5759cf5D3C",
-            "0x1a3fadf44c95A5B9777775CcfF61e1F391c498d9",
-            "0x09008e91AB755714C3B221658D4D6874AED12984",
-            "0x1e02D4f2E74370aE2e1dD5ed1F92554c7e187315",
-            "0x1Ba1BF324b1342Bbaf00A7065Ae1e520decDd1B4",
-            "0x5e21535EF3ac184f2aB72243E993E6af9e2B643b",
-            "0xC10bb0f31101469C1351253a5358F61cdd3Deb2a",
-            "0xe53b060CA05d263a045A026ae3b5F54C694C14EA",
-            "0xd374DBE0ac3014B0853414CF055A5004cF4675D0",
-            "0x46F5E620C326Ee0275dbDFBdB98320DC0e816c1D"
-            // Add more addresses as needed
+            // Add the rest of the addresses here
         ];
 
         function checkApelist() {
@@ -90,12 +94,4 @@
             if (apelistAddresses.includes(enteredAddress)) {
                 document.getElementById("resultMessage").innerText = "Congrats, you are in the Apelist!";
                 document.getElementById("resultMessage").className = "whitelisted";
-            } else {
-                document.getElementById("resultMessage").innerText = "Sorry, you are not in the Apelist.";
-                document.getElementById("resultMessage").className = "not-whitelisted";
             }
-        }
-    </script>
-
-</body>
-</html>

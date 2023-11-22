@@ -3,14 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wallet Checker</title>
+    <title>Apelist Checker</title>
     <style>
         body {
             background-color: #C4FBFF;
             text-align: center;
         }
+        h1 {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
         form {
-            margin: 50px auto;
+            margin: 20px auto;
             max-width: 400px;
             padding: 20px;
             background-color: #fff;
@@ -30,16 +35,18 @@
 </head>
 <body>
 
+    <h1>Apelist Checker</h1>
+
     <form id="walletForm">
         <label for="walletAddress">Enter your wallet address:</label>
         <input type="text" id="walletAddress" placeholder="Paste your wallet address here" required>
-        <button type="button" onclick="checkWhitelist()">Check Whitelist</button>
+        <button type="button" onclick="checkApelist()">Check Apelist</button>
         <p id="resultMessage"></p>
     </form>
 
     <script>
-        // List of whitelisted wallet addresses
-        var whitelistedAddresses = [
+        // List of Apelist addresses
+        var apelistAddresses = [
             "0x1005Fbf6Ff95dF199813d173c9325286052c26cf",
             "0x9cef01a6Fe9e2d459C550e7278ee1DE0e2296c34",
             "0xe7F3A19dEE6E8196c784952617aAb382dCca566b",
@@ -76,15 +83,15 @@
             // Add more addresses as needed
         ];
 
-        function checkWhitelist() {
+        function checkApelist() {
             var enteredAddress = document.getElementById("walletAddress").value;
 
-            // Check if the entered address is in the whitelist
-            if (whitelistedAddresses.includes(enteredAddress)) {
-                document.getElementById("resultMessage").innerText = "Congrats, you are whitelisted!";
+            // Check if the entered address is in the Apelist
+            if (apelistAddresses.includes(enteredAddress)) {
+                document.getElementById("resultMessage").innerText = "Congrats, you are in the Apelist!";
                 document.getElementById("resultMessage").className = "whitelisted";
             } else {
-                document.getElementById("resultMessage").innerText = "Sorry, you are not whitelisted.";
+                document.getElementById("resultMessage").innerText = "Sorry, you are not in the Apelist.";
                 document.getElementById("resultMessage").className = "not-whitelisted";
             }
         }

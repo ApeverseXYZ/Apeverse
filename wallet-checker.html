@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apelist & Free Mint Checker</title>
+    <title>Apelist Checker</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblebody+Neue&display=swap">
     <style>
         body {
@@ -28,20 +28,17 @@
             background-color: #fff;
             border-radius: 10px;
         }
+        label {
+            margin-bottom: 10px; /* Add some spacing between label and input */
+        }
         #resultMessage, #resultMessageFree {
             font-weight: bold;
             margin-top: 10px;
         }
-        .whitelisted {
+        .whitelisted, .free-mint {
             color: green;
         }
-        .not-whitelisted {
-            color: red;
-        }
-        .free-mint {
-            color: green;
-        }
-        .not-free-mint {
+        .not-whitelisted, .not-free-mint {
             color: red;
         }
         img {
@@ -55,20 +52,21 @@
 </head>
 <body>
 
-    <h1>Apelist & Free Mint Checker</h1>
+    <h1>Apelist Checker</h1>
 
     <form id="walletForm">
-        <label for="walletAddress">Enter your wallet address for Apelist:</label>
+        <label for="walletAddress">Enter your wallet address:</label>
         <input type="text" id="walletAddress" placeholder="Paste your wallet address here" required>
         <button type="button" onclick="checkApelist()">Check Apelist</button>
         <p id="resultMessage"></p>
     </form>
 
-    <!-- Replace IMG_URL with the correct GitHub raw link to your image -->
     <img src="https://github.com/ApeverseXYZ/Apeverse/blob/main/Logo.png?raw=true" alt="Apeverse Logo">
 
+    <h1>Free Mint Checker</h1>
+
     <form id="freeMintForm">
-        <label for="freeMintAddress">Enter your wallet address for Free Mint:</label>
+        <label for="freeMintAddress">Enter your wallet address:</label>
         <input type="text" id="freeMintAddress" placeholder="Paste your wallet address here" required>
         <button type="button" onclick="checkFreeMint()">Check Free Mint</button>
         <p id="resultMessageFree"></p>
@@ -77,12 +75,16 @@
     <script>
         // List of Apelist addresses
         var apelistAddresses = [
-            // Add the Apelist addresses here
+            "0x1005Fbf6Ff95dF199813d173c9325286052c26cf",
+            "0x9cef01a6Fe9e2d459C550e7278ee1DE0e2296c34",
+            // Add the rest of the Apelist addresses here
         ];
 
         // List of Free Mint addresses
         var freeMintAddresses = [
-            // Add the Free Mint addresses here
+            "0x124A830A46082e73476C7042D8DFB7D4dADF6596",
+            "0x3F1fBc615658EC482b16da264deC33832d8e0A7E",
+            // Add the rest of the Free Mint addresses here
         ];
 
         function checkApelist() {

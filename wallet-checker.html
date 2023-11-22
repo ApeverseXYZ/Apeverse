@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apelist Checker</title>
+    <title>Address Checkers</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap">
     <style>
         body {
@@ -22,24 +22,31 @@
             margin-bottom: 20px;
             font-family: 'Bubblegum Sans', cursive;
         }
-        form {
+        .checker-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .checker {
+            flex: 1;
             max-width: 400px;
-            margin: 20px auto;
             padding: 20px;
             background-color: #fff;
             border-radius: 10px;
         }
-        #resultMessage {
+        #resultMessage, #resultMessageFree {
             font-weight: bold;
             margin-top: 10px;
         }
-        .whitelisted {
+        .whitelisted, .not-whitelisted, .free-mint {
             color: green;
         }
-        .not-whitelisted {
+        .not-free-mint {
             color: red;
         }
-        img {
+        iframe {
             width: 100%;
             max-width: 400px;
             border-radius: 8px;
@@ -50,19 +57,48 @@
 </head>
 <body>
 
-    <h1>Apelist Checker</h1>
+    <h1>Address Checkers</h1>
 
-    <!-- Replace IMG_URL with the correct GitHub raw link to your image -->
-    <img src="https://github.com/ApeverseXYZ/Apeverse/blob/main/Logo.png?raw=true" alt="Apeverse Logo">
+    <div class="checker-container">
+        <!-- Free Mint Checker -->
+        <div class="checker">
+            <h2>Free Mint Checker</h2>
+            <form id="freeMintForm">
+                <label for="freeMintAddress">Enter your address:</label>
+                <input type="text" id="freeMintAddress" placeholder="Paste your address here" required>
+                <button type="button" onclick="checkFreeMint()">Check Free Mint</button>
+                <p id="resultMessageFree"></p>
+            </form>
+            <iframe src="https://github.com/ApeverseXYZ/Apeverse/blob/main/Logo.png?raw=true" width="400" height="225" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+        </div>
 
-    <form id="walletForm">
-        <label for="walletAddress">Enter your wallet address:</label>
-        <input type="text" id="walletAddress" placeholder="Paste your wallet address here" required>
-        <button type="button" onclick="checkApelist()">Check Apelist</button>
-        <p id="resultMessage"></p>
-    </form>
+        <!-- Apelist Checker -->
+        <div class="checker">
+            <h2>Apelist Checker</h2>
+            <form id="walletForm">
+                <label for="walletAddress">Enter your address:</label>
+                <input type="text" id="walletAddress" placeholder="Paste your address here" required>
+                <button type="button" onclick="checkApelist()">Check Apelist</button>
+                <p id="resultMessage"></p>
+            </form>
+        </div>
+    </div>
 
     <script>
+        // List of Free Mint addresses
+        var freeMintAddresses = [
+            "0x124A830A46082e73476C7042D8DFB7D4dADF6596",
+            "0x3F1fBc615658EC482b16da264deC33832d8e0A7E",
+            "0xa2590cEA17239C32C05500A44e29221906956155",
+            "0xE5475694dbDa631a7d88Fff7d1b751A457B76824",
+            "0xe7F3A19dEE6E8196c784952617aAb382dCca566b",
+            "0x9807eceCa310e31BA8E71316432Fe4836b45DA32",
+            "0xADE4FBED97eF37F3BfbaF36B575a1B114DA92155",
+            "0xCabB179ca4f9360e4761121A2363a3AF5587B1aA",
+            "0xDcE27571b41AAf718A3Addde33491BDA74138589"
+            // Add the rest of the Free Mint addresses here
+        ];
+
         // List of Apelist addresses
         var apelistAddresses = [
             "0x1005Fbf6Ff95dF199813d173c9325286052c26cf",
@@ -87,8 +123,21 @@
             "0xa67A4bDaEdD0600A7C39822c5431896DE9126BCE",
             "0x82D02eEdD932eF8d6c3a8408B30b26D254dc7da8",
             "0x48243d05e3C74b0b4eAA6c0530C3451aDF3f82e6",
-            // Add the rest of the addresses here
+            // Add the rest of the Apelist addresses here
         ];
+
+        function checkFreeMint() {
+            var enteredAddress = document.getElementById("freeMintAddress").value;
+
+            // Check if the entered address is in the Free Mint list
+            if (freeMintAddresses.includes(enteredAddress)) {
+                document.getElementById("resultMessageFree").innerText = "Congrats, you are eligible for Free Mint!";
+                document.getElementById("resultMessageFree").className = "free-mint";
+            } else {
+                document.getElementById("resultMessageFree").innerText = "Sorry, you are not eligible for Free Mint.";
+                document.getElementById("resultMessageFree").className = "not-free-mint";
+            }
+        }
 
         function checkApelist() {
             var enteredAddress = document.getElementById("walletAddress").value;

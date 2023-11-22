@@ -4,6 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wallet Checker</title>
+    <style>
+        body {
+            background-color: #C4FBFF;
+            text-align: center;
+        }
+        form {
+            margin: 50px auto;
+            max-width: 400px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+        }
+        #resultMessage {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .whitelisted {
+            color: green;
+        }
+        .not-whitelisted {
+            color: red;
+        }
+    </style>
 </head>
 <body>
 
@@ -59,8 +82,10 @@
             // Check if the entered address is in the whitelist
             if (whitelistedAddresses.includes(enteredAddress)) {
                 document.getElementById("resultMessage").innerText = "Congrats, you are whitelisted!";
+                document.getElementById("resultMessage").className = "whitelisted";
             } else {
                 document.getElementById("resultMessage").innerText = "Sorry, you are not whitelisted.";
+                document.getElementById("resultMessage").className = "not-whitelisted";
             }
         }
     </script>
